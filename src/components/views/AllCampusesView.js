@@ -6,6 +6,16 @@ const AllCampusesView = (props) => {
     return <div>There are no campuses.</div>;
   }
 
+  function show_image(src, width, height) {
+    var img = document.createElement("img");
+    img.src = src;
+    img.width = width;
+    img.height = height;
+
+    // This next line will just add it to the <body> tag
+    document.body.appendChild(img);
+  }
+
   return (
     <div>
       {props.allCampuses.map((campus) => (
@@ -13,7 +23,7 @@ const AllCampusesView = (props) => {
           <Link to={`/campus/${campus.id}`}>
             <h1>{campus.name}</h1>
           </Link>
-          <p>{campus.description}</p>
+          <div><img src ={campus.imageUrl} width="200" height="200"></img></div>
         </div>
       ))}
     </div>
