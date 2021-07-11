@@ -15,7 +15,7 @@ export const fetchAllCampusesThunk = () => async (dispatch) => {
 
 //Single campus
 export const fetchCampusThunk = (id) => async (dispatch) => {
-  // thunk creator would not an be async function 
+  // thunk creator would not an be async function
   // if using Promise.then:
   // return axios
   //   .get(`/api/campuses/${id}`)
@@ -74,6 +74,16 @@ export const fetchStudentThunk = id => async dispatch => {
   try {
     let res = await axios.get(`/api/students/${id}`);
     dispatch(ac.fetchStudent(res.data));
+  } catch(err) {
+    console.error(err);
+  }
+};
+
+export const addCampusThunk = (campus) => async (dispatch) => {
+  try {
+    let res = await axios.post(`/api/campuses`, campus);
+    dispatch(ac.addCampus(res.data));
+    return res.data;
   } catch(err) {
     console.error(err);
   }

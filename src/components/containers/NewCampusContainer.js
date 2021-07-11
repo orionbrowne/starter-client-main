@@ -2,18 +2,16 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import NewStudentView from '../views/NewStudentView';
-import { addStudentThunk } from '../../store/thunks';
+import NewCampusView from '../views/NewCampusView';
+import { addCampusThunk } from '../../store/thunks';
 
 
-class NewStudentContainer extends Component {
+class NewCampusContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-          firstname: "",
-          lastname: "",
-          email:"",
-          campusId: null,
+          name: "",
+          address: "",
           redirect: false,
           redirectId: null
         };
@@ -28,14 +26,12 @@ class NewStudentContainer extends Component {
     handleSubmit = async event => {
         event.preventDefault();
 
-        let student = {
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            campusId: this.state.campusId,
-            email: this.state.email
+        let campus = {
+            name: this.state.name,
+            address: this.state.address
         };
 
-        let newStudent = await this.props.addStudent(student);
+        let newCampus = await this.props.addCampus(campus);
 
         this.setState({
           firstname: "",
@@ -43,7 +39,7 @@ class NewStudentContainer extends Component {
           email: "",
           campusId: null,
           redirect: true,
-          redirectId: newStudent.id
+          redirectId: newCampus.id
         });
     }
 
@@ -53,10 +49,10 @@ class NewStudentContainer extends Component {
 
     render() {
         if(this.state.redirect) {
-          return (<Redirect to={`/student/${this.state.redirectId}`}/>)
+          return (<Redirect to={`/campus/${this.state.redirectId}`}/>)
         }
         return (
-          <NewStudentView
+          <NewCampusView
             handleChange = {this.handleChange}
             handleSubmit={this.handleSubmit}
           />
@@ -66,8 +62,8 @@ class NewStudentContainer extends Component {
 
 const mapDispatch = (dispatch) => {
     return({
-        addStudent: (student) => dispatch(addStudentThunk(student)),
+        addCampus: (campus) => dispatch(addCampusThunk(campus)),
     })
 }
 
-export default connect(null, mapDispatch)(NewStudentContainer);
+export default NewCampusContainer;

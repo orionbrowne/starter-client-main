@@ -26,6 +26,9 @@ const AllCampusesView = (props) => {
           <div><img src ={campus.imageUrl} width="200" height="200"></img></div>
         </div>
       ))}
+      <Link to={`/newcampus`}>
+        <button>Add New Campus</button>
+      </Link>
     </div>
   );
 };
