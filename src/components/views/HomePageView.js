@@ -3,6 +3,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import { styles } from './styles.css';
 
 import { Link } from 'react-router-dom';
 
@@ -14,8 +15,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     textAlign: 'left',
     fontType: 'bold',
-    fontFamily: 'Courier, sans-serif', 
-    fontSize: '35px', 
+    fontFamily: 'Courier, sans-serif',
+    fontSize: '35px',
     color: '#CDDC39'
   },
   appBar:{
@@ -58,10 +59,10 @@ const HomePageView = () => {
           </Link>
         </Toolbar>
       </AppBar>
-      
+
       <div className={classes.greeting}><h1>Home Page</h1></div>
     </div>
-  );    
+  );
 }
 
 
