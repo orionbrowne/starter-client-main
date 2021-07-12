@@ -66,4 +66,4 @@ const mapDispatch = (dispatch) => {
     })
 }
 
-export default NewCampusContainer;
+export default connect(null, mapDispatch)(NewCampusContainer);
