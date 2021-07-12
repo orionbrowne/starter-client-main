@@ -35,6 +35,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const AllCampusesView = (props) => {
+  const {campuses, deleteCampus } = props;
   const classes = useStyles();
 
   if (!props.allCampuses.length) {
@@ -65,6 +66,7 @@ const AllCampusesView = (props) => {
             <h1>{campus.name}</h1>
           </Link>
           <div><img src ={campus.imageUrl} width="200" height="200"></img></div>
+          <button onClick={() => deleteCampus(campus.id)}>Delete</button>
         </div>
       ))}
       <Link to={`/newcampus`}>
